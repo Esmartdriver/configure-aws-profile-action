@@ -16,13 +16,13 @@ inputs:
   region:
     required: false
     description: 'Name of AWS region to be used.'
-    default: 'us-west-2'
+    default: 'us-east-1'
 
 runs:
   using: "composite"
   steps:
   - name: Configure AWS Credentials
-    uses: aws-actions/configure-aws-credentials@v2
+    uses: aws-actions/configure-aws-credentials@v4
     with:
       role-to-assume: ${{ inputs.role-arn }}
       aws-region: ${{ inputs.region }}
