@@ -17,6 +17,10 @@ inputs:
     required: false
     description: 'Name of AWS region to be used.'
     default: 'us-east-1'
+  role-duration-seconds:
+    required: false
+    description: 'Session duration in seconds'
+    default: 3600
 
 runs:
   using: "composite"
@@ -27,6 +31,7 @@ runs:
       role-to-assume: ${{ inputs.role-arn }}
       aws-region: ${{ inputs.region }}
       mask-aws-account-id: 'no'
+      role-duration-seconds: ${{ inputs.role-duration-seconds }}
 
   - name: Setup Profile
     shell: bash
